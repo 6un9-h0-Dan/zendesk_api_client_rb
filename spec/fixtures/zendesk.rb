@@ -44,6 +44,18 @@ module ZendeskAPI
       end
     end
 
+    def section
+      VCR.use_cassette('valid_section') do
+        @section ||= client.sections.first
+      end
+    end
+
+    def article
+      VCR.use_cassette('valid_article') do
+        @article ||= client.articles.first
+      end
+    end
+
     def ticket
       VCR.use_cassette('valid_ticket') do
         @ticket ||= client.tickets.detect { |t| t.status != 'closed' }

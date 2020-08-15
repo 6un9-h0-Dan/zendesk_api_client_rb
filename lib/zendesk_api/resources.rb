@@ -179,6 +179,34 @@ module ZendeskAPI
         "help_center/categories"
       end
     end
+
+    class Section < Resource
+    end
+
+    has_many Section
+  end
+
+  class Section < ReadResource
+    class << self
+      def resource_path
+        "help_center/sections"
+      end
+    end
+
+    has Category
+
+    class Article < Resource
+    end
+
+    has_many Article
+  end
+
+  class Article < ReadResource
+    class << self
+      def resource_path
+        "help_center/articles"
+      end
+    end
   end
 
   class TopicSubscription < Resource
