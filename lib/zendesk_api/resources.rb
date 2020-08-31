@@ -201,12 +201,22 @@ module ZendeskAPI
     has_many Article
   end
 
-  class Article < ReadResource
+  class Translation < Resource
+    class << self
+      def resource_path
+        "help_center/translations"
+      end
+    end
+  end
+
+  class Article < Resource
     class << self
       def resource_path
         "help_center/articles"
       end
     end
+
+    has_many Translation
   end
 
   class TopicSubscription < Resource
